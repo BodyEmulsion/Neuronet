@@ -9,7 +9,7 @@ class MatrixOfWeights :
 	protected Matrix
 {
 public:
-	MatrixOfWeights(int,int);
+	//MatrixOfWeights(int,int);
 	~MatrixOfWeights();
 	void save(string);
 	void load(string);

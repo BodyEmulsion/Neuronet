@@ -4,7 +4,7 @@
 
 MatrixOfMistakes::MatrixOfMistakes()
 {
-	Matrix::matrix = vector<vector<double>>()
+	//Matrix::matrix = vector<vector<double>>()
 }
 
 
