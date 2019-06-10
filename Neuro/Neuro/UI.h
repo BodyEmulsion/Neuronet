@@ -4,7 +4,8 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
+using namespace std; //МАКС, ЕБАННЫЙ Ж ТЫ ДАЛБАЙОП. Что это? Где нейросеть? Где меню? ШТО ЭТО? 
+					 //З.ы. см. мою курсовую по ООП
 
 class UI
 {
