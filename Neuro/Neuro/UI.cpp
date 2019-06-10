@@ -12,6 +12,7 @@ void UI::mainMenu()
 	vector<double> trueOutput;
 	string path;
 	int option;
+	UI::mainMenuText();
 	while (cin >> option)
 	{
 		UI::mainMenuText();
