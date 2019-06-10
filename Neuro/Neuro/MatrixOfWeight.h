@@ -3,6 +3,7 @@
 #include <random>
 #include<ctime>
 #include<fstream>
+#include<string>
 
 class MatrixOfWeights :
 	protected Matrix

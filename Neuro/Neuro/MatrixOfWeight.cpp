@@ -21,61 +21,41 @@ MatrixOfWeights::~MatrixOfWeights()
 {
 }
 
-void MatrixOfWeights::save(string)
+void MatrixOfWeights::save(string adress)
 {
-	//	ofstream file(adress);
-//	file << matrix.size() << endl;
-//	file << matrix.at(0).size() << endl;
-//	for (vector<float> x : matrix)
-//	{
-//		for (float y : x)
-//		{
-//			file << y << " ";
-//		}
-//		file << endl;
-//	}
-//	file << endl;
+	ofstream file(adress);
+	file << matrix.size() << endl;
+	file << matrix.at(0).size() << endl;
+	for (vector<double> x : matrix)
+	{
+		for (double y : x)
+		{
+			file << y << " ";
+		}
+		file << endl;
+	}
+	file << endl;
 }
 
-void MatrixOfWeights::load(string)
+void MatrixOfWeights::load(string adress)
 {
-	//	ifstream file(adress);
-//	string buff;
-//	int sizeX, sizeY;
-//	getline(file, buff);
-//	sizeX = stoi(buff);
-//	getline(file, buff);
-//	sizeY = stoi(buff);
-//	vector<vector<float>> matrix(sizeX, vector<float>(sizeY));
-//	for (vector<float>& x : matrix)
-//	{
-//		for (float& y : x)
-//		{
-//			file >> y;
-//		}
-//	}
-//	Matrix::matrix = matrix;
+	ifstream file(adress);
+	string buff;
+	int sizeX, sizeY;
+	getline(file, buff);
+	sizeX = stoi(buff);
+	getline(file, buff);
+	sizeY = stoi(buff);
+	vector<vector<double>> matrix(sizeX, vector<double>(sizeY));
+	for (vector<double>& x : matrix)
+	{
+		for (double& y : x)
+		{
+			file >> y;
+		}
+	}
+	Matrix::matrix = matrix;
 }
-
-//Matrix::Matrix(string adress)
-//{
-//	ifstream file(adress);
-//	string buff;
-//	int sizeX, sizeY;
-//	getline(file, buff);
-//	sizeX = stoi(buff);
-//	getline(file, buff);
-//	sizeY = stoi(buff);
-//	vector<vector<float>> matrix(sizeX, vector<float>(sizeY));
-//	for (vector<float>& x : matrix)
-//	{
-//		for (float& y : x)
-//		{
-//			file >> y;
-//		}
-//	}
-//	Matrix::matrix = matrix;
-//}
 
 //vector<float> activationFunction(vector<float> sum)
 //{
