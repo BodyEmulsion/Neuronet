@@ -9,6 +9,8 @@ public:
 	void learning(vector<double> input, vector<double> trueOutput);
 	void save(string);
 	void load(string);
+	int outputSize();
+	int inputSize();
 
 private:
 	vector<MatrixOfWeights> matrixsOfWeights;

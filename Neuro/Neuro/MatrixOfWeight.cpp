@@ -2,22 +2,51 @@
 
 
 
-//MatrixOfWeights::MatrixOfWeights(int X = 0, int Y = 0) : Matrix()
-//{
-//	int randomizedNumber1 = 10;
-//	int randomizedNumber2 = 1000;
-//	srand(time(0));
-//	for (vector<double>& x : matrix)
-//		for (double& y : x)
-//			y = static_cast<float>(rand() % randomizedNumber1 /
-//				static_cast<float>(randomizedNumber1)) + 
-//			    static_cast<float>(rand() % randomizedNumber2 /
-//				static_cast<float>(randomizedNumber2)) - 1;
-//}
+MatrixOfWeights::MatrixOfWeights(int X = 0, int Y = 0) : Matrix()
+{
+	int randomizedNumber1 = 10;
+	int randomizedNumber2 = 1000;
+	srand(time(0));
+	for (vector<double>& x : matrix)
+		for (double& y : x)
+			y = static_cast<float>(rand() % randomizedNumber1 /
+				static_cast<float>(randomizedNumber1)) + 
+			    static_cast<float>(rand() % randomizedNumber2 /
+				static_cast<float>(randomizedNumber2)) - 1;
+}
+
+MatrixOfWeights::MatrixOfWeights() : Matrix()
+{
+}
 
 
 MatrixOfWeights::~MatrixOfWeights()
 {
+}
+
+vector<double> MatrixOfWeights::returnWeightedValues(vector<double> input)
+{
+	const int xmax = getSizeX(), ymax = getSizeY();
+	vector<double> result(ymax,0);
+	for (int x = 0; x < xmax; x++)
+	{
+		for (int y = 0; y < ymax; y++)
+		{
+			result.at(y) += getValue(x,y) * input.at(x);
+		}
+	}
+	return result;
+}
+
+vector<double> MatrixOfWeights::returnActivatedValues(vector<double> input)
+{
+	int size = input.size();
+	vector<double> result(size);
+	for (int i = 0; i < size; i++)
+	{
+		result.at(i) = activationFunction(input.at(i));
+	}
+	return result;
 }
 
 void MatrixOfWeights::save(string adress)
@@ -90,3 +119,8 @@ void MatrixOfWeights::load(string adress)
 //{
 //	return (1 / (1 + exp(-(x))));
 //}
+
+double activationFunction(double x )
+{
+	return (1 / (1 + exp(-(x))));
+}

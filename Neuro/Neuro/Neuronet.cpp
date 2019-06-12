@@ -6,15 +6,26 @@
 Neuronet::Neuronet(vector<int> neuronetStructure = vector<int>()) : matrixsOfWeights(neuronetStructure.size()-1)
 {
 	int X = 0;
-	//for (MatrixOfWeights& i : matrixsOfWeights)
+	for (MatrixOfWeights& i : matrixsOfWeights)
 	{
-		//i = MatrixOfWeights::MatrixOfWeights(neuronetStructure.at(X), neuronetStructure.at(X+1));
+		i = MatrixOfWeights::MatrixOfWeights(neuronetStructure.at(X), neuronetStructure.at(X+1));
 		X++;
 	}
 }
 
 Neuronet::~Neuronet()
 {
+}
+vector<double> Neuronet::calculate(vector<double> input)
+{
+	vector<double> result;
+	vector<double> temp;
+	for (MatrixOfWeights i : matrixsOfWeights)
+	{
+		temp = i.returnWeightedValues(input);
+		input = i.returnActivatedValues(temp);
+	}
+	return input;
 }
 void Neuronet::save(string adress)
 {
@@ -42,6 +53,16 @@ void Neuronet::load(string adress)
 		i.load(buff);
 	}
 	Neuronet::matrixsOfWeights = matrixs;
+}
+
+int Neuronet::outputSize()
+{
+	return matrixsOfWeights.back().getSizeY();
+}
+
+int Neuronet::inputSize()
+{
+	return matrixsOfWeights.front().getSizeX();
 }
 
 

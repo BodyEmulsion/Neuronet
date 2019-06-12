@@ -6,15 +6,19 @@
 #include<string>
 
 class MatrixOfWeights :
-	protected Matrix
+	public Matrix
 {
 public:
-	//MatrixOfWeights(int,int);
+	MatrixOfWeights(int,int);
+	MatrixOfWeights();
 	~MatrixOfWeights();
+	vector<double> returnWeightedValues(vector<double>);
+	vector<double> returnActivatedValues(vector<double>);
 	void save(string);
 	void load(string);
 
 private:
 
 };
-
+ 
+double activationFunction(double);
