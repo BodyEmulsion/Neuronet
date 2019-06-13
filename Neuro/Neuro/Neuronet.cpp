@@ -27,16 +27,25 @@ vector<double> Neuronet::calculate(vector<double> input)
 	}
 	return input;
 }
-void Neuronet::learning(vector<double> input, vector<double> trueOutput)
+void Neuronet::learning(vector<double> input, vector<double> trueOutput) //реярш
 {
 	float learningRate = 0.2;
 	vector<vector<double>> matrixOfMistakes = returnMatrixOfMistakes(calculate(input), trueOutput);
 	vector<vector<double>> matrixOfOutputs = returnMatrixOfOutputs(input);
 	vector<vector<double>> matrixOfWeightedValues = returnMatrixOfWeightedValues(matrixOfOutputs);
-
-
-
-
+	for (int i = 0; i < size(); i++)
+	{
+		for (int x = 0; x < matrixsOfWeights.at(i).getSizeX(); x++)
+		{
+			for (int y = 0; y < matrixsOfWeights.at(i).getSizeY(); y++)
+			{
+				double temp;
+				temp = matrixsOfWeights.at(i).getValue(x, y) + learningRate * matrixOfMistakes.at(i).at(y) * 
+					   derivativeOfTheActivationFunction(matrixOfWeightedValues.at(i).at(y)) * matrixOfOutputs.at(i).at(x);
+				matrixsOfWeights.at(i).setValue(x,y,temp);
+			}
+		}
+	}
 }
 void Neuronet::save(string adress)
 {

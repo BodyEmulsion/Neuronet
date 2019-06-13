@@ -23,3 +23,4 @@ private:
 };
  
 double activationFunction(double);
+double derivativeOfTheActivationFunction(double);
