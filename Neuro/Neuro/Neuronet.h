@@ -15,5 +15,9 @@ public:
 
 private:
 	vector<MatrixOfWeights> matrixsOfWeights;
+
+	vector<vector<double>> returnMatrixOfMistakes(vector<double>, vector<double>);
+	vector<vector<double>> returnMatrixOfOutputs(vector<double>);
+	vector<vector<double>> returnMatrixOfWeightedValues(vector<vector<double>>);
 };
 

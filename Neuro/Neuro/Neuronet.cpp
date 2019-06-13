@@ -27,6 +27,17 @@ vector<double> Neuronet::calculate(vector<double> input)
 	}
 	return input;
 }
+void Neuronet::learning(vector<double> input, vector<double> trueOutput)
+{
+	float learningRate = 0.2;
+	vector<vector<double>> matrixOfMistakes = returnMatrixOfMistakes(calculate(input), trueOutput);
+	vector<vector<double>> matrixOfOutputs = returnMatrixOfOutputs(input);
+	vector<vector<double>> matrixOfWeightedValues = returnMatrixOfWeightedValues(matrixOfOutputs);
+
+
+
+
+}
 void Neuronet::save(string adress)
 {
 	ofstream file(adress);
@@ -68,6 +79,48 @@ int Neuronet::inputSize()
 int Neuronet::size()
 {
 	return matrixsOfWeights.size();
+}
+
+vector<vector<double>> Neuronet::returnMatrixOfMistakes(vector<double> output, vector<double> trueOutput) //реярш
+{
+	int sizeOfNeuronet = size();
+	vector<vector<double>> matrixOfMistakes(sizeOfNeuronet);
+	for (int i = 0; i < output.size(); i++)
+	{
+		matrixOfMistakes.back().push_back(trueOutput.at(i) - output.at(i));
+	}
+	for (int x = sizeOfNeuronet - 2; x <= 0; x++)
+	{
+		matrixOfMistakes.at(x) = matrixsOfWeights.at(x + 1).returnLayerMistakes(matrixOfMistakes.at(x + 1)); //реярш
+	}
+	return matrixOfMistakes;
+}
+
+vector<vector<double>> Neuronet::returnMatrixOfOutputs(vector<double> input) //реярш
+{
+	int sizeOfNeuronet = size();
+	vector<vector<double>> outputMatrix(sizeOfNeuronet+1);
+	outputMatrix.front() = input;
+	vector<double> result;
+	for (int i = 1; i < sizeOfNeuronet+1; i++)
+	{
+		outputMatrix.at(i) = matrixsOfWeights.at(i).returnWeightedValues(input);
+		input = matrixsOfWeights.at(i).returnActivatedValues(outputMatrix.at(i));
+	}
+	return outputMatrix;
+}
+
+vector<vector<double>> Neuronet::returnMatrixOfWeightedValues(vector<vector<double>> matrixOfOutputs) //реярш
+{
+	int sizeOfNeuronet = size();
+	vector<vector<double>> matrixOfWeightedValues(sizeOfNeuronet);
+	for (int i = 0; i < sizeOfNeuronet; i++)
+	{
+		matrixOfWeightedValues.at(i) = matrixsOfWeights.at(i).returnWeightedValues(matrixOfOutputs.at(i));
+	}
+
+
+	return vector<vector<double>>();
 }
 
 
