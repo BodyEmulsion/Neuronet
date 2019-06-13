@@ -4,6 +4,7 @@ class Neuronet
 {
 public:
 	Neuronet(vector<int>);
+	Neuronet();
 	~Neuronet();
 	vector<double> calculate(vector<double> input);
 	void learning(vector<double> input, vector<double> trueOutput);

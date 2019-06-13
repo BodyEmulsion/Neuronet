@@ -13,6 +13,10 @@ Neuronet::Neuronet(vector<int> neuronetStructure = vector<int>()) : matrixsOfWei
 	}
 }
 
+Neuronet::Neuronet() : matrixsOfWeights()
+{
+}
+
 Neuronet::~Neuronet()
 {
 }
@@ -29,7 +33,7 @@ vector<double> Neuronet::calculate(vector<double> input)
 }
 void Neuronet::learning(vector<double> input, vector<double> trueOutput) //реярш
 {
-	float learningRate = 0.2;
+	float learningRate = 0.1;
 	vector<vector<double>> matrixOfMistakes = returnMatrixOfMistakes(calculate(input), trueOutput);
 	vector<vector<double>> matrixOfOutputs = returnMatrixOfOutputs(input);
 	vector<vector<double>> matrixOfWeightedValues = returnMatrixOfWeightedValues(matrixOfOutputs);
@@ -113,8 +117,8 @@ vector<vector<double>> Neuronet::returnMatrixOfOutputs(vector<double> input) //р
 	vector<double> result;
 	for (int i = 1; i < sizeOfNeuronet+1; i++)
 	{
-		outputMatrix.at(i) = matrixsOfWeights.at(i).returnWeightedValues(input);
-		input = matrixsOfWeights.at(i).returnActivatedValues(outputMatrix.at(i));
+		outputMatrix.at(i) = matrixsOfWeights.at(i-1).returnWeightedValues(input);
+		input = matrixsOfWeights.at(i-1).returnActivatedValues(outputMatrix.at(i));
 	}
 	return outputMatrix;
 }
@@ -129,7 +133,7 @@ vector<vector<double>> Neuronet::returnMatrixOfWeightedValues(vector<vector<doub
 	}
 
 
-	return vector<vector<double>>();
+	return matrixOfWeightedValues;
 }
 
 

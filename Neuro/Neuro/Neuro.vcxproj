@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="MatrixOfMistakes.cpp" />
     <ClCompile Include="MatrixOfOutputs.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MatrixOfMistakes.h" />
     <ClInclude Include="MatrixOfOutputs.h" />
