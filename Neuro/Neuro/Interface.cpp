@@ -132,7 +132,7 @@ void Interface::learning()
 
 void Interface::learningWithPack()
 {
-	int iteration = 1000;
+	int iteration = 20;
 	int in, out, size;
 	in = neuronet.inputSize();
 	out = neuronet.outputSize();
@@ -161,11 +161,10 @@ void Interface::learningWithPack()
 	}
 	for (int i = 0; i < iteration; i++)
 	{
-		for (int i = 0; i < size; i++)
+		for (int j = 0; j < size; j++)
 		{
-			neuronet.learning(input.at(i), output.at(i));
+			neuronet.learning(input.at(j), output.at(j));
 		}
 	}
-	//neuronet.learning(input, output);
 	cout << "Готово!" << endl;
 }

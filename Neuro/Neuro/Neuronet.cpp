@@ -33,7 +33,7 @@ vector<double> Neuronet::calculate(vector<double> input)
 }
 void Neuronet::learning(vector<double> input, vector<double> trueOutput) //реярш
 {
-	float learningRate = 0.1;
+	float learningRate = 10;
 	vector<vector<double>> matrixOfMistakes = returnMatrixOfMistakes(calculate(input), trueOutput);
 	vector<vector<double>> matrixOfOutputs = returnMatrixOfOutputs(input);
 	vector<vector<double>> matrixOfWeightedValues = returnMatrixOfWeightedValues(matrixOfOutputs);
