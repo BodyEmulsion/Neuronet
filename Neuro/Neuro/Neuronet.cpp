@@ -65,4 +65,9 @@ int Neuronet::inputSize()
 	return matrixsOfWeights.front().getSizeX();
 }
 
+int Neuronet::size()
+{
+	return matrixsOfWeights.size();
+}
+
 

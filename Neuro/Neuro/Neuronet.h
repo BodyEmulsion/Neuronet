@@ -11,6 +11,7 @@ public:
 	void load(string);
 	int outputSize();
 	int inputSize();
+	int size();
 
 private:
 	vector<MatrixOfWeights> matrixsOfWeights;

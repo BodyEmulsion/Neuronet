@@ -14,6 +14,7 @@ public:
 	~MatrixOfWeights();
 	vector<double> returnWeightedValues(vector<double>);
 	vector<double> returnActivatedValues(vector<double>);
+	vector<double> returnLayerMistakes(vector<double>);
 	void save(string);
 	void load(string);
 

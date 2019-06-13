@@ -26,11 +26,11 @@ MatrixOfWeights::~MatrixOfWeights()
 
 vector<double> MatrixOfWeights::returnWeightedValues(vector<double> input)
 {
-	const int xmax = getSizeX(), ymax = getSizeY();
-	vector<double> result(ymax,0);
-	for (int x = 0; x < xmax; x++)
+	const int xSize = getSizeX(), ySize = getSizeY();
+	vector<double> result(ySize,0);
+	for (int x = 0; x < xSize; x++)
 	{
-		for (int y = 0; y < ymax; y++)
+		for (int y = 0; y < ySize; y++)
 		{
 			result.at(y) += getValue(x,y) * input.at(x);
 		}
@@ -45,6 +45,20 @@ vector<double> MatrixOfWeights::returnActivatedValues(vector<double> input)
 	for (int i = 0; i < size; i++)
 	{
 		result.at(i) = activationFunction(input.at(i));
+	}
+	return result;
+}
+
+vector<double> MatrixOfWeights::returnLayerMistakes(vector<double> input)
+{
+	const int xSize = getSizeX(), ySize = getSizeY();
+	vector<double> result(xSize,0);
+	for (int x = 0; x < xSize; x++)
+	{
+		for (int y = 0; y < ySize; y++)
+		{
+			result.at(x) += getValue(x, y) * input.at(y);
+		}
 	}
 	return result;
 }
